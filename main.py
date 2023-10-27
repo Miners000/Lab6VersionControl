@@ -19,6 +19,23 @@ def encode(password):
             encodedPassword += "1"
         elif int(num) == 9:
             encodedPassword += "2"
+    return encodedPassword
+
+
+def decode(encoded_password):
+    decoded_password = ""
+    for digit in encoded_password:
+        num = int(digit)
+        if num == 0:
+            decoded_password += "7"
+        elif num == 1:
+            decoded_password += "8"
+        elif num == 2:
+            decoded_password += "9"
+        else:
+            decoded_password += str(num - 3)
+    return decoded_password
+
 
 def main():
     while True:
@@ -36,7 +53,11 @@ def main():
                 print("Your password has been encoded and stored!")
 
         if userInput == 2:
-            print("decoder not yet available")
+            print(f"The encoded password is {encodedPassword}, and the original password is {decode(encodedPassword)}.")
 
         if userInput == 3:
             break
+
+
+if __name__ == '__main__':
+    main()
